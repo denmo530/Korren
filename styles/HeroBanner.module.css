@@ -1,0 +1,57 @@
+.container {
+  position: relative;
+  min-height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageBox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.imageBox img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.heroText {
+  position: absolute;
+  text-align: center;
+  color: white;
+}
+
+.heroText h1 {
+  font-size: 60px;
+}
+
+.heroText p {
+  font-size: 22px;
+}
+
+.colorOne {
+  color: #68904d;
+  font-weight: 700;
+}
+
+.colorTwo {
+  color: #da6a00;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    height: 40vh;
+  }
+  .heroText h1 {
+    font-size: 35px;
+  }
+
+  .heroText p {
+    font-size: 15px;
+  }
+}

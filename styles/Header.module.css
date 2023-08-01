@@ -1,0 +1,10 @@
+.title {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.subtitle {
+  font-weight: light;
+  margin-top: 8px;
+  color: rgb(115 115 115);
+}

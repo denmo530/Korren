@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  outline: none;
+  background-color: rgba(30, 30, 38, 0.7);
+}
+
+.container div:focus {
+  outline: none;
+}
+
+.window {
+  position: relative;
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 66.666667%;
+  @media (min-width: 768px) {
+    max-width: 66.666667%;
+  }
+  @media (min-width: 1024px) {
+    max-width: 60%;
+  }
+  @media (min-width: 1280px) {
+    max-width: 40%;
+  }
+  @media (max-width: 768px) {
+    max-width: 90%;
+  }
+}
+
+.content {
+  height: 100%;
+  transform: translateY(100%);
+  transition-duration: 300ms;
+  opacity: 0;
+}
+
+.temp {
+  transition: all 300ms ease;
+  height: 100%;
+  height: stretch;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #fff;
+  outline: none;
+}
+
+.temp div:focus {
+  outline: none;
+}
+
+.header {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 0.375rem 0.375rem 0 0;
+  justify-content: center;
+  position: relative;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.btn {
+  padding: 0.25rem;
+  border: none;
+  transition: all 150ms ease;
+  left: 1.5rem;
+  position: absolute;
+  background-color: #fff;
+  color: black;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.7;
+}
+
+.title {
+  font-weight: 600;
+  font-size: large;
+}
+
+.body {
+  position: relative;
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+}
+
+.innerFooter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem; /* "4" in Tailwind equals 1rem (assuming default font size) */
+  width: 100%;
+}

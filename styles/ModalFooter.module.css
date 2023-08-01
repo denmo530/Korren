@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 16px;
+  justify-content: space-evenly;
+}
+
+.authIcon {
+  cursor: pointer;
+}
+
+.authIcon:hover {
+  opacity: 0.7;
+}
+
+.accountExist {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: small;
+  font-weight: 300;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .accountExist {
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-top: 8px;
+  }
+}
+
+.logInBtn {
+  cursor: pointer;
+  color: rgb(38 38 38);
+  font-weight: 500;
+}
+
+.logInBtn:hover {
+  text-decoration: underline;
+}

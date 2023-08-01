@@ -1,0 +1,126 @@
+.sliderStyles {
+  position: relative;
+  max-width: 950px;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.arrowContainer {
+  position: relative;
+  max-width: 950px;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.mainImage {
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid rgba(200, 210, 209, 0.7);
+  user-select: none;
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  margin-top: 10px;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(200, 210, 209, 0.7);
+}
+
+.smallImages {
+  cursor: pointer;
+  flex-basis: 1/4;
+  max-width: 10%;
+  margin: 5px;
+  object-fit: cover;
+}
+
+.smallImages:hover {
+  transition: all 150ms ease;
+  opacity: 0.7;
+}
+
+.leftArrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  background-color: transparent;
+  z-index: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.rightArrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 80px;
+  background-color: transparent;
+  z-index: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.leftArrow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent;
+  transition: background-color 150ms ease;
+  border-radius: 0.5rem 0rem 0rem 0.5rem;
+}
+.rightArrow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent;
+  transition: background-color 150ms ease;
+  border-radius: 0rem 0.5rem 0.5rem 0rem;
+}
+
+.leftArrow:hover::before {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 0.5rem 0rem 0rem 0.5rem;
+}
+.rightArrow:hover::before {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 0rem 0.5rem 0.5rem 0rem;
+}
+
+@media screen and (max-width: 768px) {
+  .sliderStyles {
+    aspect-ratio: auto 16/9;
+  }
+
+  .smallImages {
+    flex: 0 0 20%;
+    max-width: 20%;
+    margin-right: 5px;
+  }
+
+  .leftArrow,
+  .rightArrow {
+    width: 50px;
+  }
+}

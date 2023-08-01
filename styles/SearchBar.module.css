@@ -1,0 +1,19 @@
+  .searchContainer {
+    margin: 2rem ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .searchContainer input {
+    width: 30rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border-radius: 0.75rem;
+    border: 0.2rem solid black;
+  }
+
+
+  
+
+  

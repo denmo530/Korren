@@ -1,0 +1,56 @@
+.footer {
+  background-color: rgba(212, 212, 212, 0.4);
+  text-align: center;
+  width: 100%;
+  bottom: 0;
+  margin-top: 5rem;
+  padding: 2rem 1rem;
+}
+
+.title {
+  font-size: xx-large;
+  margin-bottom: 16px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.section {
+  /* width: calc(25% - 500px); */
+  width: fit-content;
+  margin-bottom: 8px;
+  margin: 0px 12px;
+}
+
+.sectionTwo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex: 1/4;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.section h4 {
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.sectionTwo h6 {
+  margin-bottom: 2px;
+  font-weight: 100;
+}
+
+@media screen and (max-width: 768px) {
+  .section {
+    width: 100%;
+  }
+}
+
+.row > p {
+  font-size: x-small;
+}

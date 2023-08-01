@@ -1,0 +1,35 @@
+.currentImage {
+  width: 800px;
+  height: 400px;
+}
+
+.images {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.thumbnail {
+  padding: 1rem;
+}
+
+.image {
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.image:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .currentImage {
+    width: 400px;
+    height: 250px;
+  }
+
+  .thumbnail {
+    padding: 0.5rem;
+  }
+}

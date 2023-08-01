@@ -1,0 +1,30 @@
+.ratingContainer {
+  display: flex;
+  align-items: center;
+}
+
+.ratingFilled {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+  background-color: #DA6A00;
+}
+
+.ratingEmpty {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+  border: 2px solid #DA6A00;
+  background-color: transparent;
+}
+
+.ratingHalfFilled {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+  background: conic-gradient(from 180deg at 50% 50%, #da6a00 50%, transparent 50%);
+  border: 2px solid #da6a00;
+}

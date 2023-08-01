@@ -1,0 +1,42 @@
+.header {
+  color: violet;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+}
+
+.h2 {
+  color: white;
+  margin-bottom: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  opacity: 70%;
+  margin-top: 2em;
+  padding: 16px 16px;
+}
+
+.btn {
+  margin-top: 2em;
+}
+
+.externalAuth {
+  display: flex;
+  margin-top: 20px;
+  gap: 15px;
+  justify-content: center;
+  text-align: center;
+}
+
+.authIcon {
+  cursor: pointer;
+}

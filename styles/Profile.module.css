@@ -1,0 +1,152 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 12px 100px;
+}
+
+.sideMenu {
+  padding-top: 1rem;
+  margin-right: 3rem;
+  min-width: 30vw;
+}
+.reviewContainer {
+  flex: 1;
+  max-width: calc(70vw - 20px);
+}
+
+.sideMenu > span {
+  font-size: smaller;
+}
+
+.option {
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 8px;
+  margin: 4px 0;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: red;
+}
+
+.accountInfo > h1 {
+  font-size: x-large;
+  font-weight: 500;
+}
+
+.accountInfo > p {
+  margin: 2px 0;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.btn {
+  position: relative;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 150ms ease-in;
+  background-color: #da6a00;
+  border: 2px solid #da6a00;
+  color: white;
+  font-size: large;
+  font-weight: 500;
+  padding: 8px;
+  width: 150px;
+  margin-top: 1rem;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn [disabled] {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.icon {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    margin: 12px 25px;
+  }
+
+  .sideMenu {
+    width: 90vw;
+    margin: 2rem 0;
+  }
+
+  .wrapper {
+    width: 90vw;
+  }
+}
+
+.accountInfo {
+  font-size: medium;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.accountInfo > h1 {
+  font-size: x-large;
+  font-weight: 500;
+}
+
+.accountInfo > p {
+  margin: 2px 0;
+}
+
+.btn {
+  position: relative;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 150ms ease-in;
+  background-color: #da6a00;
+  border: 2px solid #da6a00;
+  color: white;
+  font-size: large;
+  font-weight: 500;
+  padding: 8px;
+  width: 150px;
+  margin-top: 1rem;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn [disabled] {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.icon {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sideMenu {
+    width: 100%;
+    margin-right: 0;
+  }
+}
