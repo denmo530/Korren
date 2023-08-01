@@ -1,9 +1,7 @@
 import { Dorm } from "@prisma/client";
 
 const baseUrl =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:3000"
-    : "korren-kd4cqxt93-denmo530.vercel.app";
+  process.env.NODE_ENV === "development" ? "http://localhost:3000" : "";
 
 export async function getAllDormNames() {
   try {
