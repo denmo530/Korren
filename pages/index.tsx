@@ -24,20 +24,20 @@ const Home = () => {
       <HeroBanner />
       <Section />
       <div className={styles.container}>
-        {dorms.map((dorm: Dorm) => (
+        {dorms?.map((dorm: Dorm) => (
           <Link
             href={{
               pathname: "/dorms/[name]",
-              query: { name: dorm.label.toLowerCase() },
+              query: { name: dorm?.label.toLowerCase() },
             }}
-            key={dorm.value}
+            key={dorm?.value}
           >
             <AnimatedCard
-              src={dorm.image || "Placeholder img"}
-              alt={dorm.label}
-              title={dorm.label}
-              message={dorm.description}
-              key={dorm.value}
+              src={dorm?.image || "Placeholder img"}
+              alt={dorm?.label}
+              title={dorm?.label}
+              message={dorm?.description}
+              key={dorm?.value}
             />
           </Link>
         ))}

@@ -22,12 +22,27 @@ type Dorm = {
 };
 
 export async function getStaticPaths() {
-  const paths = await getAllDormNames();
+  try {
+    const baseUrl = "http://localhost:3000";
 
-  return {
-    paths,
-    fallback: false,
-  };
+    const response = await fetch(`${baseUrl}/api/dorm`);
+    const data = await response.json();
+    const dormNames = data.map((dorm: Dorm) => dorm.name);
+    const paths = dormNames.map((dormName: string) => {
+      return {
+        params: {
+          name: dormName.toLowerCase(),
+        },
+      };
+    });
+    return {
+      paths,
+      fallback: false,
+    };
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to get dorm names");
+  }
 }
 
 export async function getStaticProps({ params }: any) {
@@ -44,9 +59,7 @@ export async function getStaticProps({ params }: any) {
 export default function Name({ dorm }: { dorm: Dorm }) {
   const [sortBy, setSortBy] = useState<"rating" | "date">("date");
 
-  const reviews: Review[] = dorm.reviews;
-
-  const sortedReviews = [...reviews].sort((a: Review, b: Review) => {
+  const sortedReviews = [...dorm?.reviews].sort((a: Review, b: Review) => {
     if (sortBy === "rating") {
       return b.rating - a.rating;
     } else {
@@ -54,11 +67,11 @@ export default function Name({ dorm }: { dorm: Dorm }) {
     }
   });
 
-  const totalRating = reviews.reduce(
+  const totalRating = dorm?.reviews.reduce(
     (sum: number, review: Review) => sum + review.rating,
     0
   );
-  const averageRating = totalRating / reviews.length;
+  const averageRating = totalRating / dorm?.reviews.length;
 
   const handleSortByRating = () => {
     setSortBy("rating");
@@ -75,12 +88,12 @@ export default function Name({ dorm }: { dorm: Dorm }) {
       ) : (
         <>
           <div className={styles.header}>
-            <h1>{dorm.name}</h1>
+            <h1>{dorm?.name}</h1>
             <Rating rating={averageRating} />
-            <h4>{dorm.adress}, Norrköping</h4>
+            <h4>{dorm?.adress}, Norrköping</h4>
           </div>
           <div className={styles.gallery}>
-            <Carousel reviews={reviews} dormImage={dorm.image} />
+            <Carousel reviews={dorm?.reviews} dormImage={dorm?.image} />
           </div>
           <div className={styles.sorting}>
             <div className={styles.sortingLeft}>
