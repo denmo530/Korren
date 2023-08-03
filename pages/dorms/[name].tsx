@@ -10,6 +10,7 @@ import Link from "next/link";
 import { BsArrowLeft, BsSortDown } from "react-icons/bs";
 import useImageModal from "@/hooks/useImageModal";
 import ImageModal from "@/components/modals/ImageModal";
+import prismadb from "@/lib/prismadb";
 
 type Dorm = {
   name: string;
@@ -21,40 +22,76 @@ type Dorm = {
   reviews: Review[];
 };
 
+const baseUrl =
+  process.env.NODE_ENV === "development" ? "http://localhost:3000" : "";
+
 export async function getStaticPaths() {
   try {
-    const baseUrl =
-      process.env.NODE_ENV === "development" ? "http://localhost:3000" : "";
+    const dorms = await prismadb.dorm.findMany();
+    if (dorms) {
+      const dormNames = dorms.map((dorm) => dorm.name);
+      const paths = dormNames.map((dormName: string) => {
+        return {
+          params: {
+            name: dormName.toLowerCase(),
+          },
+        };
+      });
 
-    const response = await fetch(`${baseUrl}/api/dorm`);
-    const data = await response.json();
-    const dormNames = data.map((dorm: Dorm) => dorm.name);
-    const paths = dormNames.map((dormName: string) => {
       return {
-        params: {
-          name: dormName.toLowerCase(),
-        },
+        paths,
+        fallback: false,
       };
-    });
-    return {
-      paths,
-      fallback: false,
-    };
+    }
   } catch (error) {
     console.error(error);
-    throw new Error("Failed to get dorm names");
+    return {
+      paths: [],
+      fallback: false,
+    };
   }
 }
 
 export async function getStaticProps({ params }: any) {
   const name = params.name.toLowerCase(); // Convert to lowercase
-  const dorm = await getDormData(name);
+  try {
+    const dorms = await prismadb.dorm.findMany();
+    if (dorms) {
+      const filteredDorm = dorms.find(
+        (dorm) => dorm.name.toLowerCase() === name.toLowerCase()
+      );
 
-  return {
-    props: {
-      dorm,
-    },
-  };
+      if (!filteredDorm) throw new Error("Dorm not found");
+
+      // Fetch reviews
+      const reviews = await prismadb.review.findMany();
+
+      const parsedReviews = reviews.map((review) => {
+        return {
+          ...review,
+          createdAt: JSON.parse(JSON.stringify(review.createdAt)),
+        };
+      });
+
+      const dorm = {
+        ...filteredDorm,
+        reviews: parsedReviews,
+      };
+
+      return {
+        props: {
+          dorm,
+        },
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return {
+      props: {
+        dorm: null,
+      },
+    };
+  }
 }
 
 export default function Name({ dorm }: { dorm: Dorm }) {
