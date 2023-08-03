@@ -11,6 +11,7 @@ import { BsArrowLeft, BsSortDown } from "react-icons/bs";
 import useImageModal from "@/hooks/useImageModal";
 import ImageModal from "@/components/modals/ImageModal";
 import prismadb from "@/lib/prismadb";
+import { GetServerSidePropsContext } from "next";
 
 type Dorm = {
   name: string;
@@ -25,35 +26,42 @@ type Dorm = {
 const baseUrl =
   process.env.NODE_ENV === "development" ? "http://localhost:3000" : "";
 
-export async function getStaticPaths() {
-  try {
-    const dorms = await prismadb.dorm.findMany();
-    if (dorms) {
-      const dormNames = dorms.map((dorm) => dorm.name);
-      const paths = dormNames.map((dormName: string) => {
-        return {
-          params: {
-            name: dormName.toLowerCase(),
-          },
-        };
-      });
+// export async function getStaticPaths() {
+//   try {
+//     const dorms = await prismadb.dorm.findMany();
+//     if (dorms) {
+//       const dormNames = dorms.map((dorm) => dorm.name);
+//       const paths = dormNames.map((dormName: string) => {
+//         return {
+//           params: {
+//             name: dormName.toLowerCase(),
+//           },
+//         };
+//       });
 
-      return {
-        paths,
-        fallback: false,
-      };
-    }
-  } catch (error) {
-    console.error(error);
+//       return {
+//         paths,
+//         fallback: false,
+//       };
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     return {
+//       paths: [],
+//       fallback: false,
+//     };
+//   }
+// }
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const name = context.params?.name as string; // Get dynamic parameter directly from context
+  if (!name) {
     return {
-      paths: [],
-      fallback: false,
+      props: {
+        dorm: null,
+      },
     };
   }
-}
-
-export async function getServerSideProps({ params }: any) {
-  const name = params.name.toLowerCase(); // Convert to lowercase
   try {
     const dorms = await prismadb.dorm.findMany();
     if (dorms) {
