@@ -52,7 +52,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }: any) {
+export async function getServerSideProps({ params }: any) {
   const name = params.name.toLowerCase(); // Convert to lowercase
   try {
     const dorms = await prismadb.dorm.findMany();
