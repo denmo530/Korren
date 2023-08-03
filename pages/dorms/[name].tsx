@@ -64,8 +64,11 @@ export async function getStaticProps({ params }: any) {
       if (!filteredDorm) throw new Error("Dorm not found");
 
       // Fetch reviews
-      const reviews = await prismadb.review.findMany();
-
+      const reviews = await prismadb.review.findMany({
+        where: {
+          dormId: String(filteredDorm.id),
+        },
+      });
       const parsedReviews = reviews.map((review) => {
         return {
           ...review,
