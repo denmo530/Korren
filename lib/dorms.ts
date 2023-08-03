@@ -1,6 +1,7 @@
 import { Dorm } from "@prisma/client";
 
-const baseUrl = "http://localhost:3000";
+const baseUrl =
+  process.env.NODE_ENV === "development" ? "http://localhost:3000" : "";
 
 export async function getAllDormNames() {
   try {

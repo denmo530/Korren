@@ -23,7 +23,8 @@ type Dorm = {
 
 export async function getStaticPaths() {
   try {
-    const baseUrl = "http://localhost:3000";
+    const baseUrl =
+      process.env.NODE_ENV === "development" ? "http://localhost:3000" : "";
 
     const response = await fetch(`${baseUrl}/api/dorm`);
     const data = await response.json();
