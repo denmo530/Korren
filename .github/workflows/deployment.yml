@@ -25,6 +25,7 @@ jobs:
       - name: Run CI command
         run: npm ci
 
+        # add linter
       #   - name: Check linting
       #     run: npm run lint
 
