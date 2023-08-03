@@ -4,7 +4,6 @@ import AnimatedCard from "@/components/AnimatedCard";
 import useDorms from "@/hooks/useDorms";
 import Link from "next/link";
 import HeroBanner from "@/components/HeroBanner";
-import Footer from "@/components/Footer";
 
 type Dorm = {
   label: string;
