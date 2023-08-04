@@ -1,11 +1,11 @@
-import { Review } from "@prisma/client";
-import React, { useState } from "react";
-import ReviewCard from "./ReviewCard";
-import styles from "@/styles/Profile.module.css";
-import DeleteReviewModal from "./modals/DeleteReviewModal";
-import useDeleteReviewModal from "@/hooks/useDeleteReviewModal";
-import ImageModal from "./modals/ImageModal";
-import useImageModal from "@/hooks/useImageModal";
+import { Review } from '@prisma/client';
+import React, { useState } from 'react';
+import styles from '@/styles/Profile.module.css';
+import useDeleteReviewModal from '@/hooks/useDeleteReviewModal';
+import useImageModal from '@/hooks/useImageModal';
+import ReviewCard from './ReviewCard';
+import DeleteReviewModal from './modals/DeleteReviewModal';
+import ImageModal from './modals/ImageModal';
 
 interface ProfilePostsProps {
   isLoading: boolean;
@@ -13,7 +13,7 @@ interface ProfilePostsProps {
 }
 
 const ProfilePosts: React.FC<ProfilePostsProps> = ({ isLoading, reviews }) => {
-  const [selectedReviewId, setSelectedReviewId] = useState<string>("");
+  const [selectedReviewId, setSelectedReviewId] = useState<string>('');
 
   const deleteReviewModal = useDeleteReviewModal();
   const imageModal = useImageModal();

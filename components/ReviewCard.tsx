@@ -1,11 +1,8 @@
-import React, { useCallback, useState } from "react";
-import styles from "@/styles/ReviewCard.module.css";
-import Rating from "./Rating";
-import { AiOutlineDelete } from "react-icons/ai";
-import Image from "next/image";
-import useDeleteReviewModal from "@/hooks/useDeleteReviewModal";
-import ImageModal from "./modals/ImageModal";
-import useImageModal from "@/hooks/useImageModal";
+import React, { useState } from 'react';
+import { AiOutlineDelete } from 'react-icons/ai';
+import Image from 'next/image';
+import styles from '@/styles/ReviewCard.module.css';
+import Rating from './Rating';
 
 interface ReviewCardProps {
   title: string;
@@ -26,7 +23,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
   showDeleteBtn,
   images,
   onDelete,
-  onImage,
+  onImage
 }) => {
   const [showFullComment, setShowFullComment] = useState<boolean>(false);
 
@@ -39,20 +36,18 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
       return body;
     }
 
-    return body.slice(0, 100) + "...";
+    return `${body.slice(0, 100)}...`;
   };
 
   const formattedDate = new Date(date).toDateString();
 
   // Reviews with no images have a slot with empty "" need to remove it
-  const filteredImages = images?.filter((image) => image !== "");
+  const filteredImages = images?.filter((image) => image !== '');
 
   return (
     <div className={styles.card}>
       <div className={styles.deleteRow}>
-        {showDeleteBtn && (
-          <AiOutlineDelete className={styles.deleteBtn} onClick={onDelete} />
-        )}
+        {showDeleteBtn && <AiOutlineDelete className={styles.deleteBtn} onClick={onDelete} />}
       </div>
       <div className={styles.header}>
         <h1>{title}</h1>
@@ -65,13 +60,13 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         <p className={styles.reviewBody}>{renderComment()}</p>
         {body.length > 100 && (
           <span className={styles.toggleBody} onClick={handleToggleComment}>
-            {showFullComment ? "Read Less" : "Read More"}
+            {showFullComment ? 'Read Less' : 'Read More'}
           </span>
         )}
         {filteredImages && (
           <div className={styles.images}>
             {filteredImages.length === 0 ? (
-              <div></div>
+              <div />
             ) : (
               filteredImages.map((image) => (
                 <Image
@@ -93,16 +88,3 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 };
 
 export default ReviewCard;
-
-{
-  /* <div className={styles.content}>
-<div className={styles.info}>
-  <div className={styles.leftCol}>
-    <div className={styles.title}>{title}</div>
-    <Rating rating={rating} />
-  </div>
-  <div className={styles.rightCol}>{formattedDate}</div>
-</div>
-<div className={styles.review}>{body}</div>
-</div> */
-}

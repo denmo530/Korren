@@ -1,7 +1,7 @@
-import { User } from "@prisma/client";
-import React from "react";
-import styles from "@/styles/Profile.module.css";
-import { signOut } from "next-auth/react";
+import { User } from '@prisma/client';
+import React from 'react';
+import { signOut } from 'next-auth/react';
+import styles from '@/styles/Profile.module.css';
 
 interface ProfileInfoProps {
   user: User;
@@ -14,37 +14,39 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
   user,
   selectedOption,
   setSelectedOption,
-  totalReviews,
+  totalReviews
 }) => {
   return (
     <div className={styles.wrapper}>
       <p>
-        Signed in as:{" "}
-        {
-          <span style={{ fontWeight: 500, color: "#da6a00" }}>
-            {user?.name || `${user?.firstName} ${user?.lastName}`}
-          </span>
-        }
+        Signed in as:{' '}
+        <span style={{ fontWeight: 500, color: '#da6a00' }}>
+          {user?.name || `${user?.firstName} ${user?.lastName}`}
+        </span>
       </p>
 
       <p>
-        You have made{" "}
+        You have made{' '}
         {
-          <span
+          <button
+            type="button"
             style={{
-              textDecoration: "underline",
-              color: "#68904d",
-              fontSize: "large",
-              cursor: "pointer",
+              textDecoration: 'underline',
+              color: '#68904d',
+              fontSize: 'large',
+              cursor: 'pointer',
+              background: 'none',
+              border: 'none',
+              padding: 0,
+              outline: 'inherit'
             }}
-            onClick={() => setSelectedOption("Posts")}
-          >
+            onClick={() => setSelectedOption('Posts')}>
             {totalReviews}
-          </span>
-        }{" "}
+          </button>
+        }{' '}
         reviews!
       </p>
-      <button className={styles.btn} onClick={() => signOut()}>
+      <button type="button" className={styles.btn} onClick={() => signOut()}>
         Sign out
       </button>
     </div>

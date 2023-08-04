@@ -1,3 +1,87 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "plugins": ["import", "jsx-a11y", "react", "react-hooks", "@typescript-eslint"],
+  "env": {
+    "node": true,
+    "browser": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "no-var": "warn",
+    "vars-on-top": "warn",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "@typescript-eslint/no-unsafe-return": "off",
+
+    // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
+    "no-prototype-builtins": "off",
+    // https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "off",
+    // Too restrictive: https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/destructuring-assignment.md
+    "react/destructuring-assignment": "off",
+    // No jsx extension: https://github.com/facebook/create-react-app/issues/87#issuecomment-234627904
+    "react/jsx-filename-extension": "off",
+    "react/require-default-props": "off",
+    "react/function-component-definition": "off",
+    "react/no-unstable-nested-components": "off",
+    // Use function hoisting to improve code readability
+    "no-use-before-define": ["error", { "functions": false, "classes": true, "variables": true }],
+    // Allow most functions to rely on type inference. If the function is exported, then `@typescript-eslint/explicit-module-boundary-types` will ensure it's typed.
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-misused-promises": "off",
+    "no-unsafe-optional-chaining": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": true,
+        "variables": true,
+        "typedefs": true
+      }
+    ],
+    // Common abbreviations are known and readable
+    "unicorn/prevent-abbreviations": "off",
+    "react/jsx-props-no-spreading": "off",
+    // Airbnb prefers forEach
+
+    "unicorn/no-array-for-each": "off",
+    "@typescript-eslint/indent": "off",
+    "no-nested-ternary": "off",
+    // It's not accurate in the monorepo style
+    "import/no-extraneous-dependencies": "off",
+    "@typescript-eslint/comma-dangle": "off",
+    "react/no-array-index-key": "warn",
+    "arrow-body-style": "off",
+    "no-unused-vars": "warn",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "no-plusplus": "off",
+    "no-console": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  }
 }

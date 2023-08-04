@@ -1,12 +1,9 @@
-import useSWR from "swr";
-import fetcher from "@/lib/fetcher";
-import { Review } from "@prisma/client";
+import useSWR from 'swr';
+import { Review } from '@prisma/client';
+import fetcher from '@/lib/fetcher';
 
 const useDormReviews = (dormId: string) => {
-  const { data, error, isLoading, mutate } = useSWR(
-    `/api/reviews/${dormId}`,
-    fetcher
-  );
+  const { data, error, isLoading, mutate } = useSWR(`/api/reviews/${dormId}`, fetcher);
 
   return { data, error, isLoading, mutate };
 };

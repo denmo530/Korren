@@ -1,8 +1,8 @@
-import React, { ReactElement, useState, useEffect, useCallback } from "react";
-import styles from "@/styles/Modal.module.css";
-import { GrClose } from "react-icons/gr";
+import React, { ReactElement, useState, useEffect, useCallback } from 'react';
+import { GrClose } from 'react-icons/gr';
+import styles from '@/styles/Modal.module.css';
 
-import Button from "@/components/Button";
+import Button from '@/components/Button';
 
 interface ModalProps {
   isOpen?: boolean;
@@ -27,7 +27,7 @@ const Modal: React.FC<ModalProps> = ({
   actionLabel,
   disabled,
   secondaryAction,
-  secondaryActionLabel,
+  secondaryActionLabel
 }) => {
   const [showModal, setShowModal] = useState(isOpen);
 
@@ -56,49 +56,38 @@ const Modal: React.FC<ModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <>
-      <div className={styles.container}>
-        <div className={styles.window}>
-          <div
-            className={styles.content}
-            style={
-              showModal
-                ? { transform: "translateY(0)", opacity: 1 }
-                : { opacity: 0 }
-            }
-          >
-            <div className={styles.temp}>
-              <div className={styles.header}>
-                <button className={styles.btn} onClick={closeModalHandler}>
-                  <GrClose size={20} />
-                </button>
-                <div className={styles.title}>{title}</div>
-              </div>
-              <div className={styles.body}>{body}</div>
-              <div className={styles.footer}>
-                <div className={styles.innerFooter}>
-                  {secondaryAction && secondaryActionLabel && (
-                    <Button
-                      outline
-                      disabled={disabled}
-                      label={secondaryActionLabel}
-                      onClick={secondaryActionHandler}
-                    />
-                  )}
-
+    <div className={styles.container}>
+      <div className={styles.window}>
+        <div
+          className={styles.content}
+          style={showModal ? { transform: 'translateY(0)', opacity: 1 } : { opacity: 0 }}>
+          <div className={styles.temp}>
+            <div className={styles.header}>
+              <button type="button" className={styles.btn} onClick={closeModalHandler}>
+                <GrClose size={20} />
+              </button>
+              <div className={styles.title}>{title}</div>
+            </div>
+            <div className={styles.body}>{body}</div>
+            <div className={styles.footer}>
+              <div className={styles.innerFooter}>
+                {secondaryAction && secondaryActionLabel && (
                   <Button
+                    outline
                     disabled={disabled}
-                    label={actionLabel}
-                    onClick={submitModalHandler}
+                    label={secondaryActionLabel}
+                    onClick={secondaryActionHandler}
                   />
-                </div>
-                {footer}
+                )}
+
+                <Button disabled={disabled} label={actionLabel} onClick={submitModalHandler} />
               </div>
+              {footer}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

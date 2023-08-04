@@ -1,7 +1,6 @@
-import { NextPage } from "next";
-import Image from "next/image";
-import React from "react";
-import styles from "@/styles/AnimatedCard.module.css";
+import Image from 'next/image';
+import React from 'react';
+import styles from '@/styles/AnimatedCard.module.css';
 
 interface AnimatedCardProps {
   src: string;
@@ -10,12 +9,7 @@ interface AnimatedCardProps {
   message: string;
 }
 
-const AnimatedCard: React.FC<AnimatedCardProps> = ({
-  src,
-  alt,
-  title,
-  message,
-}) => {
+const AnimatedCard: React.FC<AnimatedCardProps> = ({ src, alt, title, message }) => {
   return (
     <div className={styles.card}>
       <Image
@@ -23,11 +17,11 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({
         alt={alt}
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: 'cover' }}
       />
       <div className={styles.intro}>
         <h1>{title}</h1>
-        <div className={styles.p}>{message.slice(0, 99) + "..."}</div>
+        <div className={styles.p}>{`${message.slice(0, 99)}...`}</div>
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import Modal from "./Modal";
-import useImageModal from "@/hooks/useImageModal";
-import Image from "next/image";
-import useUserReviews from "@/hooks/useUserReviews";
-import { Review } from "@prisma/client";
-import styles from "@/styles/ImageModal.module.css";
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { Review } from '@prisma/client';
+import useImageModal from '@/hooks/useImageModal';
+import useUserReviews from '@/hooks/useUserReviews';
+import styles from '@/styles/ImageModal.module.css';
+import Modal from './Modal';
 
 interface ImageModalProps {
   selectedReviewId: string;
@@ -12,24 +12,22 @@ interface ImageModalProps {
 
 const ImageModal: React.FC<ImageModalProps> = ({ selectedReviewId }) => {
   const imageModal = useImageModal();
-  const { data: reviews, error, isLoading } = useUserReviews();
-
+  const { data, error, isLoading } = useUserReviews();
+  const reviews: Review[] = data;
   const [currentImage, setCurrentImage] = useState(0);
 
   const filteredReviews =
-    selectedReviewId &&
-    reviews.find((review: Review) => review.id === selectedReviewId);
+    selectedReviewId && reviews.find((review: Review) => review.id === selectedReviewId);
+
+  let images;
+  if (filteredReviews) images = filteredReviews.imageSrc;
 
   const handleNextImage = () => {
-    setCurrentImage((prevIndex) =>
-      prevIndex === filteredReviews.imageSrc?.length - 1 ? 0 : prevIndex + 1
-    );
+    setCurrentImage((prevIndex) => (prevIndex === images?.length - 1 ? 0 : prevIndex + 1));
   };
 
   const handlePrevImage = () => {
-    setCurrentImage((prevIndex) =>
-      prevIndex === 0 ? filteredReviews.imageSrc?.length - 1 : prevIndex - 1
-    );
+    setCurrentImage((prevIndex) => (prevIndex === 0 ? images?.length - 1 : prevIndex - 1));
   };
 
   const goToIndex = (imageIndex: number) => {
@@ -39,13 +37,12 @@ const ImageModal: React.FC<ImageModalProps> = ({ selectedReviewId }) => {
   const bodyContent = (
     <div
       style={{
-        display: "flex",
-        flexDirection: "row",
-        gap: "16px",
-        alignItems: "center",
-        width: "100%",
-      }}
-    >
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '16px',
+        alignItems: 'center',
+        width: '100%'
+      }}>
       {isLoading ? (
         <div>Loading...</div>
       ) : (

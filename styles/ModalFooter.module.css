@@ -7,6 +7,8 @@
 
 .authIcon {
   cursor: pointer;
+  border: none;
+  background: none;
 }
 
 .authIcon:hover {
@@ -39,6 +41,10 @@
   cursor: pointer;
   color: rgb(38 38 38);
   font-weight: 500;
+  background: none;
+  border: none;
+  padding: 0;
+  outline: inherit;
 }
 
 .logInBtn:hover {
