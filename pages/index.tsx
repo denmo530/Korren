@@ -1,9 +1,9 @@
-import styles from "../styles/Home.module.css";
-import Section from "@/components/Section";
-import AnimatedCard from "@/components/AnimatedCard";
-import useDorms from "@/hooks/useDorms";
-import Link from "next/link";
-import HeroBanner from "@/components/HeroBanner";
+import Link from 'next/link';
+import Section from '@/components/Section';
+import AnimatedCard from '@/components/AnimatedCard';
+import useDorms from '@/hooks/useDorms';
+import HeroBanner from '@/components/HeroBanner';
+import styles from '../styles/Home.module.css';
 
 type Dorm = {
   label: string;
@@ -26,13 +26,12 @@ const Home = () => {
         {dorms?.map((dorm: Dorm) => (
           <Link
             href={{
-              pathname: "/dorms/[name]",
-              query: { name: dorm?.label.toLowerCase() },
+              pathname: '/dorms/[name]',
+              query: { name: dorm?.label.toLowerCase() }
             }}
-            key={dorm?.value}
-          >
+            key={dorm?.value}>
             <AnimatedCard
-              src={dorm?.image || "Placeholder img"}
+              src={dorm?.image || 'Placeholder img'}
               alt={dorm?.label}
               title={dorm?.label}
               message={dorm?.description}

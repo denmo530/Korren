@@ -1,8 +1,8 @@
-import React from "react";
-import styles from "@/styles/Section.module.css";
-import Image from "next/image";
-import testimg from "@/public/buildings2.svg";
-import testimg2 from "@/public/review2.svg";
+import React from 'react';
+import Image from 'next/image';
+import styles from '@/styles/Section.module.css';
+import testimg from '@/public/buildings2.svg';
+import testimg2 from '@/public/review2.svg';
 
 const Section = () => {
   return (
@@ -13,9 +13,8 @@ const Section = () => {
             Discover your new <span>home</span>
           </h1>
           <p className={styles.itemText}>
-            Are you a college student searching for the perfect dormitory to
-            call your home away from home? Look no further than our
-            comprehensive dorm review website!
+            Are you a college student searching for the perfect dormitory to call your home away
+            from home? Look no further than our comprehensive dorm review website!
           </p>
         </div>
         <div className={styles.imageContainer}>
@@ -27,9 +26,8 @@ const Section = () => {
         <div className={styles.text}>
           <h1 className={styles.item}>Write a review</h1>
           <p className={styles.itemText}>
-            Got some dorm life wisdom to share? Write a review and help future
-            college students make informed decisions about their home away from
-            home!
+            Got some dorm life wisdom to share? Write a review and help future college students make
+            informed decisions about their home away from home!
           </p>
         </div>
       </div>

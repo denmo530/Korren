@@ -1,7 +1,7 @@
-import React from "react";
-import Image from "next/image";
-import styles from "@/styles/Avatar.module.css";
-import { useRouter } from "next/navigation";
+import React from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import styles from '@/styles/Avatar.module.css';
 
 interface AvatarProps {
   src?: string | null | undefined;
@@ -15,8 +15,8 @@ const Avatar: React.FC<AvatarProps> = ({ src }) => {
       height={35}
       width={35}
       alt="Avatar"
-      src={src || "/images/placeholder.jpg"}
-      onClick={() => router.push("/profile")}
+      src={src || '/images/placeholder.jpg'}
+      onClick={() => router.push('/profile')}
     />
   );
 };

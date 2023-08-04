@@ -1,17 +1,17 @@
-import { useState } from "react";
-import { getAllDormNames, getDormData } from "@/lib/dorms";
-import { Review } from "@prisma/client";
-import styles from "@/styles/name.module.css";
-import Rating from "@/components/Rating";
-import ReviewCard from "@/components/ReviewCard";
-import SortingButton from "@/components/SortingButton";
-import Carousel from "@/components/Carousel";
-import Link from "next/link";
-import { BsArrowLeft, BsSortDown } from "react-icons/bs";
-import useImageModal from "@/hooks/useImageModal";
-import ImageModal from "@/components/modals/ImageModal";
-import prismadb from "@/lib/prismadb";
-import { GetServerSidePropsContext } from "next";
+import { useState } from 'react';
+import { Review } from '@prisma/client';
+import Link from 'next/link';
+import { BsArrowLeft, BsSortDown } from 'react-icons/bs';
+import { GetServerSidePropsContext } from 'next';
+import { getAllDormNames, getDormData } from '@/lib/dorms';
+import styles from '@/styles/name.module.css';
+import Rating from '@/components/Rating';
+import ReviewCard from '@/components/ReviewCard';
+import SortingButton from '@/components/SortingButton';
+import Carousel from '@/components/Carousel';
+import useImageModal from '@/hooks/useImageModal';
+import ImageModal from '@/components/modals/ImageModal';
+import prismadb from '@/lib/prismadb';
 
 type Dorm = {
   name: string;
@@ -23,8 +23,7 @@ type Dorm = {
   reviews: Review[];
 };
 
-const baseUrl =
-  process.env.NODE_ENV === "development" ? "http://localhost:3000" : "";
+const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
 
 // export async function getStaticPaths() {
 //   try {
@@ -58,76 +57,69 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (!name) {
     return {
       props: {
-        dorm: null,
-      },
+        dorm: null
+      }
     };
   }
   try {
     const dorms = await prismadb.dorm.findMany();
-    if (dorms) {
-      const filteredDorm = dorms.find(
-        (dorm) => dorm.name.toLowerCase() === name.toLowerCase()
-      );
 
-      if (!filteredDorm) throw new Error("Dorm not found");
+    const filteredDorm = dorms.find((dorm) => dorm.name.toLowerCase() === name.toLowerCase());
 
-      // Fetch reviews
-      const reviews = await prismadb.review.findMany({
-        where: {
-          dormId: String(filteredDorm.id),
-        },
-      });
-      const parsedReviews = reviews.map((review) => {
-        return {
-          ...review,
-          createdAt: JSON.parse(JSON.stringify(review.createdAt)),
-        };
-      });
+    if (!filteredDorm) throw new Error('Dorm not found');
 
-      const dorm = {
-        ...filteredDorm,
-        reviews: parsedReviews,
-      };
-
+    // Fetch reviews
+    const reviews = await prismadb.review.findMany({
+      where: {
+        dormId: String(filteredDorm.id)
+      }
+    });
+    const parsedReviews = reviews.map((review) => {
       return {
-        props: {
-          dorm,
-        },
+        ...review,
+        createdAt: JSON.parse(JSON.stringify(review.createdAt))
       };
-    }
+    });
+
+    const dorm = {
+      ...filteredDorm,
+      reviews: parsedReviews
+    };
+
+    return {
+      props: {
+        dorm
+      }
+    };
   } catch (error) {
     console.log(error);
     return {
       props: {
-        dorm: null,
-      },
+        dorm: null
+      }
     };
   }
 }
 
 export default function Name({ dorm }: { dorm: Dorm }) {
-  const [sortBy, setSortBy] = useState<"rating" | "date">("date");
+  const [sortBy, setSortBy] = useState<'rating' | 'date'>('date');
 
   const sortedReviews = [...dorm?.reviews].sort((a: Review, b: Review) => {
-    if (sortBy === "rating") {
+    if (sortBy === 'rating') {
       return b.rating - a.rating;
-    } else {
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     }
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
 
-  const totalRating = dorm?.reviews.reduce(
-    (sum: number, review: Review) => sum + review.rating,
-    0
-  );
+  const totalRating = dorm?.reviews.reduce((sum: number, review: Review) => sum + review.rating, 0);
   const averageRating = totalRating / dorm?.reviews.length;
 
   const handleSortByRating = () => {
-    setSortBy("rating");
+    setSortBy('rating');
   };
 
   const handleSortByDate = () => {
-    setSortBy("date");
+    setSortBy('date');
   };
 
   return (
@@ -146,23 +138,20 @@ export default function Name({ dorm }: { dorm: Dorm }) {
           </div>
           <div className={styles.sorting}>
             <div className={styles.sortingLeft}>
-              <Link
-                style={{ textDecoration: "none", color: "black" }}
-                href="/dorms"
-              >
+              <Link style={{ textDecoration: 'none', color: 'black' }} href="/dorms">
                 <BsArrowLeft size={20} />
-                <span style={{ marginLeft: "10px" }}>Dorms</span>
+                <span style={{ marginLeft: '10px' }}>Dorms</span>
               </Link>
             </div>
             <SortingButton
               label="Sort by Rating"
               onClick={handleSortByRating}
-              outline={sortBy !== "rating"}
+              outline={sortBy !== 'rating'}
             />
             <SortingButton
               label="Sort by Date"
               onClick={handleSortByDate}
-              outline={sortBy !== "date"}
+              outline={sortBy !== 'date'}
               // icon={BsSortDown}
             />
           </div>
