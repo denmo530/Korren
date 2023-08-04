@@ -1,7 +1,6 @@
-import React, { useState, useCallback } from "react";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import styles from "@/styles/SetRating.module.css";
-import { BsStarFill, BsStar } from "react-icons/bs";
+import React, { useState, useCallback } from 'react';
+import { BsStarFill, BsStar } from 'react-icons/bs';
+import styles from '@/styles/SetRating.module.css';
 
 interface StarRatingProps {
   value: number;
@@ -10,7 +9,7 @@ interface StarRatingProps {
 
 const StarRating: React.FC<StarRatingProps> = ({ value, onChange }) => {
   const [rating, setRating] = useState<number>(value);
-  const [hover, setHover] = useState<number>(value);
+  const [, setHover] = useState<number>(value);
 
   const handleClickRating = useCallback(
     (ratingValue: number) => {
@@ -19,13 +18,13 @@ const StarRating: React.FC<StarRatingProps> = ({ value, onChange }) => {
     },
     [onChange, setRating]
   );
-  const handleHoverRating = useCallback(
-    (ratingValue: number) => {
-      setHover(ratingValue);
-      onChange(ratingValue);
-    },
-    [onChange, setHover]
-  );
+  // const handleHoverRating = useCallback(
+  //   (ratingValue: number) => {
+  //     setHover(ratingValue);
+  //     onChange(ratingValue);
+  //   },
+  //   [onChange, setHover]
+  // );
 
   return (
     <div>

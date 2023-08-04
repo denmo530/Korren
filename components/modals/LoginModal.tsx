@@ -1,15 +1,13 @@
-import React, { useCallback, useState } from "react";
-import axios from "axios";
-import useRegisterModal from "@/hooks/useRegisterModal";
-import useLoginModal from "@/hooks/useLoginModal";
-import { signIn } from "next-auth/react";
-import Modal from "./Modal";
-import Header from "../Header";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import Input from "../inputs/Input";
-import { toast } from "react-hot-toast";
-import FooterContent from "../FooterContent";
-import { useRouter } from "next/navigation";
+import React, { useState } from 'react';
+import { signIn } from 'next-auth/react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
+import useLoginModal from '@/hooks/useLoginModal';
+import Modal from './Modal';
+import Header from '../Header';
+import Input from '../inputs/Input';
+import FooterContent from '../FooterContent';
 
 const LoginModal = () => {
   const router = useRouter();
@@ -21,37 +19,39 @@ const LoginModal = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<FieldValues>({
     defaultValues: {
-      email: "",
-      password: "",
-    },
+      email: '',
+      password: ''
+    }
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    signIn("credentials", {
+    signIn('credentials', {
       ...data,
-      redirect: false,
-    }).then((callBack) => {
-      setIsLoading(false);
+      redirect: false
+    })
+      .then((callBack) => {
+        setIsLoading(false);
 
-      if (callBack?.ok) {
-        toast.success("Logged in!");
-        router.refresh();
-        loginModal.onClose();
-      }
+        if (callBack?.ok) {
+          toast.success('Logged in!');
+          router.refresh();
+          loginModal.onClose();
+        }
 
-      if (callBack?.error) {
-        toast.error(callBack.error);
-      }
-    });
+        if (callBack?.error) {
+          toast.error(callBack.error);
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   const bodyContent = (
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <Header title="Welcome back" subtitle="Login to your account" />
       <Input
         type="email"

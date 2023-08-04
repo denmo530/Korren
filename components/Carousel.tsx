@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import Image from "next/image";
-import { Review } from "@prisma/client";
-import styles from "@/styles/Carousel.module.css";
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { Review } from '@prisma/client';
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import styles from '@/styles/Carousel.module.css';
 
 interface GalleryProps {
   reviews: Review[];
@@ -10,6 +10,10 @@ interface GalleryProps {
 }
 const Gallery: React.FC<GalleryProps> = ({ reviews, dormImage }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = reviews?.map((review: Review) => review.imageSrc);
+
+  const flattenedArray: string[] = flattenArray(images);
+  if (dormImage) flattenedArray.unshift(dormImage);
 
   const handleNextImage = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -27,34 +31,29 @@ const Gallery: React.FC<GalleryProps> = ({ reviews, dormImage }) => {
     setCurrentImageIndex(imageIndex);
   };
 
-  let images = reviews?.map((review: Review) => review.imageSrc);
+  function flattenArray<T>(arr: (T | T[])[]): T[] {
+    let tempArr: T[] = [];
 
-  function flattenArray(arr: any) {
-    let flattenedArray: any = [];
-
-    arr?.forEach((element: any) => {
+    arr?.forEach((element) => {
       if (Array.isArray(element)) {
-        flattenedArray = flattenedArray.concat(flattenArray(element));
-      } else if (element !== "") {
-        flattenedArray.push(element);
+        tempArr = tempArr.concat(flattenArray(element));
+      } else if (element !== '') {
+        tempArr.push(element);
       }
     });
 
-    return flattenedArray;
+    return tempArr;
   }
-
-  const flattenedArray = flattenArray(images);
-  flattenedArray.unshift(dormImage);
 
   return (
     <div className={styles.sliderStyles}>
       <div className={styles.arrowContainer}>
-        <div className={styles.leftArrow} onClick={handlePrevImage}>
+        <button type="button" className={styles.leftArrow} onClick={handlePrevImage}>
           <AiOutlineLeft size={24} />
-        </div>
-        <div className={styles.rightArrow} onClick={handleNextImage}>
+        </button>
+        <button type="button" className={styles.rightArrow} onClick={handleNextImage}>
           <AiOutlineRight size={24} />
-        </div>
+        </button>
         <Image
           alt=""
           className={styles.mainImage}

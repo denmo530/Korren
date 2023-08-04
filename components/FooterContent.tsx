@@ -1,12 +1,10 @@
-import React, { useCallback } from "react";
-import styles from "@/styles/ModalFooter.module.css";
-import { signIn } from "next-auth/react";
+import React, { useCallback } from 'react';
+import { signIn } from 'next-auth/react';
 // Icons
-import { FaGoogle } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import useRegisterModal from "@/hooks/useRegisterModal";
-import useLoginModal from "@/hooks/useLoginModal";
+import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
+import styles from '@/styles/ModalFooter.module.css';
+import useRegisterModal from '@/hooks/useRegisterModal';
+import useLoginModal from '@/hooks/useLoginModal';
 
 interface FooterContentProps {
   login?: boolean;
@@ -28,34 +26,32 @@ const FooterContent: React.FC<FooterContentProps> = ({ login }) => {
 
   return (
     <div className={styles.container}>
-      <div
+      <button
+        type="button"
         className={styles.authIcon}
-        onClick={() => signIn("google", { callbackUrl: "/profile" })}
-      >
+        onClick={() => signIn('google', { callbackUrl: '/profile' })}>
         <FaGoogle size={40} />
-      </div>
-      <div
+      </button>
+      <button
+        type="button"
         className={styles.authIcon}
-        onClick={() => signIn("facebook", { callbackUrl: "/profile" })}
-      >
+        onClick={() => signIn('facebook', { callbackUrl: '/profile' })}>
         <FaFacebook size={40} />
-      </div>
-      <div
+      </button>
+      <button
+        type="button"
         className={styles.authIcon}
-        onClick={() => signIn("github", { callbackUrl: "/profile" })}
-      >
+        onClick={() => signIn('github', { callbackUrl: '/profile' })}>
         <FaGithub size={40} />
-      </div>
+      </button>
       <div className={styles.accountExist}>
-        <div>
-          {login ? "First time using Korren?" : "Already have an Account?"}
-        </div>
-        <div
+        <div>{login ? 'First time using Korren?' : 'Already have an Account?'}</div>
+        <button
+          type="button"
           className={styles.logInBtn}
-          onClick={login ? toggleRegister : toggleLogin}
-        >
-          {login ? "Create an Account" : "Log in"}
-        </div>
+          onClick={login ? toggleRegister : toggleLogin}>
+          {login ? 'Create an Account' : 'Log in'}
+        </button>
       </div>
     </div>
   );

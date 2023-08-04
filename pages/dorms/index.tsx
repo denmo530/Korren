@@ -1,8 +1,8 @@
-import styles from "@/styles/Dorms.module.css";
-import AnimatedCard from "@/components/AnimatedCard";
+import Link from 'next/link';
+import styles from '@/styles/Dorms.module.css';
+import AnimatedCard from '@/components/AnimatedCard';
 
-import useDorms from "@/hooks/useDorms";
-import Link from "next/link";
+import useDorms from '@/hooks/useDorms';
 
 type Dorm = {
   label: string;
@@ -24,13 +24,12 @@ const Dorms = () => {
         {dorms?.map((dorm: Dorm) => (
           <Link
             href={{
-              pathname: "/dorms/[name]",
-              query: { name: dorm?.label.toLowerCase() },
+              pathname: '/dorms/[name]',
+              query: { name: dorm?.label.toLowerCase() }
             }}
-            key={dorm?.value}
-          >
+            key={dorm?.value}>
             <AnimatedCard
-              src={dorm?.image || "Placeholder img"}
+              src={dorm?.image || 'Placeholder img'}
               alt={dorm?.label}
               title={dorm?.label}
               message={dorm?.description}

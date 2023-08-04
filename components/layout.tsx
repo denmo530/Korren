@@ -1,11 +1,11 @@
-import { ReactNode } from "react";
-import Navbar from "@/components/navbar/Navbar";
-import RegisterModal from "./modals/RegisterModal";
-import LoginModal from "./modals/LoginModal";
+import { ReactNode } from 'react';
+import { Toaster } from 'react-hot-toast';
+import Navbar from '@/components/navbar/Navbar';
+import RegisterModal from './modals/RegisterModal';
+import LoginModal from './modals/LoginModal';
 
-import { Toaster } from "react-hot-toast";
-import ReviewModal from "./modals/ReviewModal";
-import Footer from "./Footer";
+import ReviewModal from './modals/ReviewModal';
+import Footer from './Footer';
 
 interface LayoutProps {
   children: ReactNode;
@@ -19,7 +19,7 @@ function Layout({ children }: LayoutProps) {
       <LoginModal />
       <RegisterModal />
       <Navbar />
-      <main style={{ minHeight: "calc(100vh - 200px)" }}>{children}</main>
+      <main style={{ minHeight: 'calc(100vh - 200px)' }}>{children}</main>
       <Footer />
     </>
   );

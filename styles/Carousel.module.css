@@ -61,9 +61,11 @@
   align-items: center;
   justify-content: center;
   color: white;
+  border: none;
 }
 
 .rightArrow {
+  border: none;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -79,7 +81,7 @@
 }
 
 .leftArrow::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
@@ -89,7 +91,7 @@
   border-radius: 0.5rem 0rem 0rem 0.5rem;
 }
 .rightArrow::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
@@ -100,11 +102,11 @@
 }
 
 .leftArrow:hover::before {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem 0rem 0rem 0.5rem;
 }
 .rightArrow:hover::before {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 0rem 0.5rem 0.5rem 0rem;
 }
 

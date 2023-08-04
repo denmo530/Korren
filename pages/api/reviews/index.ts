@@ -1,12 +1,9 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import prismadb from "@/lib/prismadb";
-import serverAuth from "@/lib/serverAuth";
+import { NextApiRequest, NextApiResponse } from 'next';
+import prismadb from '@/lib/prismadb';
+import serverAuth from '@/lib/serverAuth';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method === "POST") {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'POST') {
     try {
       const { currentUser } = await serverAuth(req, res);
       if (!currentUser) return res.status(401).end();
@@ -20,8 +17,8 @@ export default async function handler(
           comment,
           rating,
           imageSrc,
-          userId: currentUser.id,
-        },
+          userId: currentUser.id
+        }
       });
 
       return res.status(200).json(review);
@@ -31,7 +28,7 @@ export default async function handler(
     }
   }
 
-  if (req.method === "GET") {
+  if (req.method === 'GET') {
     try {
       const reviews = await prismadb.review.findMany();
       return res.status(200).json(reviews);
@@ -40,4 +37,6 @@ export default async function handler(
       return res.status(400).end();
     }
   }
+
+  return res.status(405).end();
 }

@@ -3,7 +3,7 @@ import styles from '@/styles/SearchBar.module.css';
 
 interface SearchBarProps {
   placeholder: string;
-  onSearch: (searchTerm: string) => void;
+  // onSearch: (searchTerm: string) => void;
 }
 
 const SearchBar = ({ placeholder }: SearchBarProps) => {
@@ -14,17 +14,11 @@ const SearchBar = ({ placeholder }: SearchBarProps) => {
   };
 
   return (
-    <form className={styles.searchContainer} >
-      <input
-        type="text"
-        placeholder={placeholder}
-        value={searchTerm}
-        onChange={handleChange}
-      />
-      <button>
+    <form className={styles.searchContainer}>
+      <input type="text" placeholder={placeholder} value={searchTerm} onChange={handleChange} />
+      <button type="button">
         <span>Search</span>
       </button>
-
     </form>
   );
 };

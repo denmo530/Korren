@@ -1,14 +1,14 @@
-import React, { useCallback, useState } from "react";
-import axios from "axios";
-import useRegisterModal from "@/hooks/useRegisterModal";
-import Modal from "./Modal";
-import Header from "../Header";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import Input from "../inputs/Input";
-import { toast } from "react-hot-toast";
-import FooterContent from "../FooterContent";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import useRegisterModal from '@/hooks/useRegisterModal';
+import Modal from './Modal';
+import Header from '../Header';
+import Input from '../inputs/Input';
+import FooterContent from '../FooterContent';
 
 const RegisterModal = () => {
   const router = useRouter();
@@ -18,49 +18,51 @@ const RegisterModal = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<FieldValues>({
     defaultValues: {
-      email: "",
-      firstName: "",
-      lastName: "",
-      password: "",
-      name: "",
-    },
+      email: '',
+      firstName: '',
+      lastName: '',
+      password: '',
+      name: ''
+    }
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
     axios
-      .post("/api/register", data)
+      .post('/api/register', data)
       .then(() => {
-        toast.success("Registered!");
+        toast.success('Registered!');
         registerModal.onClose();
-        signIn("credentials", {
+        signIn('credentials', {
           ...data,
-          redirect: false,
-        }).then((callBack) => {
-          setIsLoading(false);
+          redirect: false
+        })
+          .then((callBack) => {
+            setIsLoading(false);
 
-          if (callBack?.ok) {
-            toast.success("Logged in!");
-            router.refresh();
-          }
+            if (callBack?.ok) {
+              toast.success('Logged in!');
+              router.refresh();
+            }
 
-          if (callBack?.error) {
-            toast.error(callBack.error);
-          }
-        });
+            if (callBack?.error) {
+              toast.error(callBack.error);
+            }
+          })
+          .catch((err) => console.log(err));
       })
       .catch((error) => {
         console.log(error);
-        toast.error("Something went wrong!");
+        toast.error('Something went wrong!');
       })
       .finally(() => setIsLoading(false));
   };
 
   const bodyContent = (
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <Header title="Welcome to Korren" subtitle="Create an account" />
       <Input
         type="text"

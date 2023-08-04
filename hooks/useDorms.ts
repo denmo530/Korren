@@ -1,27 +1,29 @@
-import useSWR from "swr";
-import fetcher from "@/lib/fetcher";
-import { Dorm } from "@prisma/client";
+import useSWR from 'swr';
+import { Dorm } from '@prisma/client';
+import fetcher from '@/lib/fetcher';
 
 const useDorms = () => {
-  const { data, error, isLoading, mutate } = useSWR("/api/dorm", fetcher);
-  let formattedDorms: any = [];
+  const { data, error, isLoading, mutate } = useSWR('/api/dorm', fetcher);
+  const dorms: Dorm[] = data;
+  let formattedDorms: any[] = [];
 
   if (!isLoading) {
-    formattedDorms = data.map((dorm: Dorm) => ({
+    formattedDorms = dorms.map((dorm: Dorm) => ({
       value: dorm.id,
       label: dorm.name,
       distanceToCampus: dorm.distanceToCampus,
       distanceToCenter: dorm.distanceToCenter,
       image: dorm.image,
       adress: dorm.adress,
-      description: dorm.description,
+      description: dorm.description
     }));
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   const getAll = () => formattedDorms;
 
   const getByValue = (value: string) => {
-    return data.find((dorm: any) => dorm.value === value);
+    return dorms.find((dorm: Dorm) => dorm.id === value);
   };
 
   return {
@@ -29,7 +31,7 @@ const useDorms = () => {
     getByValue,
     error,
     isLoading,
-    mutate,
+    mutate
   };
 };
 
