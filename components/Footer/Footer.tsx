@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from '@/styles/Footer.module.css';
-import FooterRow from './FooterRow';
+import FooterPages from './FooterPages';
+import FooterLinks from './FooterLinks';
 
 const footerItems = {
   pages: [
@@ -35,17 +35,12 @@ const footerItems = {
 
 const Footer: React.FC = () => {
   return (
-    <footer className={styles.footer}>
-      <h2 className="text-2xl font-semibold mb-4">Korren</h2>
-      <FooterRow items={footerItems.pages} />
-      <div className="flex flex-row justify-center gap-6">
-        <FooterRow items={footerItems.links} />
-        <span>All Rights Reserved</span>
-      </div>
-      <div className="mt-5 text-sm">
-        <p>
-          Developed by <span>Dennis Moradkhani</span> & <span>Tim Olsson</span>
-        </p>
+    <footer className="bg-slate-100 mt-8 py-8 flex items-center flex-col ">
+      <h2 className="text-lg font-semibold  mb-4 ">Korren</h2>
+      <FooterPages items={footerItems.pages} />
+      <FooterLinks items={footerItems.links} />
+      <div className="mt-5 text-xs">
+        <p>Developed by Dennis Moradkhani& Tim Olsson</p>
       </div>
     </footer>
   );

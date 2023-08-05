@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import { AiFillEdit } from 'react-icons/ai';
-import styles from '@/styles/Navbar.module.css';
+import { AiFillEdit, AiOutlineLogin } from 'react-icons/ai';
 import useLoginModal from '@/hooks/useLoginModal';
 import useCurrentUser from '@/hooks/useCurrentUser';
 import Avatar from '@/components/navbar/Avatar';
 import useReviewModal from '@/hooks/useReviewModal';
+import MenuItem from './MenuItem';
 
 const UserMenu = () => {
   const loginModal = useLoginModal();
@@ -19,26 +19,12 @@ const UserMenu = () => {
   }, [user, loginModal, reviewModal]);
 
   return (
-    <div className={styles.userMenu}>
-      <div
-        className={styles.buttons}
-        style={{ backgroundColor: '#68904d', color: 'white' }}
-        onClick={onReview}>
-        <AiFillEdit size={20} />
-        <span style={{ marginLeft: '5px' }}>Review</span>
-      </div>
+    <div className="flex flex-row items-center gap-6">
+      <MenuItem title="Review" onClick={onReview} icon={<AiFillEdit size={24} />} />
       {user ? (
         <Avatar src={user?.image} />
       ) : (
-        <div
-          onClick={loginModal.onOpen}
-          className={styles.buttons}
-          style={{
-            backgroundColor: '#da6a00',
-            color: 'white'
-          }}>
-          <span>Sign in</span>
-        </div>
+        <MenuItem title="Sign in" onClick={loginModal.onOpen} icon={<AiOutlineLogin size={24} />} />
       )}
     </div>
   );
