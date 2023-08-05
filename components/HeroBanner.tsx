@@ -10,13 +10,11 @@ const HeroBanner: React.FC = () => {
       </div>
 
       <div className={styles.heroText}>
-        <h1>Welcome to Korren</h1>
+        <h1 className="font-bold">Welcome to Korren</h1>
         <p>
           Discover the <span className={styles.colorOne}>Best Places</span> to Live as a{' '}
           <span className={styles.colorTwo}> Student</span>
         </p>
-        {/* <p>Discover the Best Places to Live as a Student</p> */}
-        {/* Discover the Best Places to Live as a Student, The rating site student housing  */}
       </div>
     </div>
   );

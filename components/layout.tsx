@@ -5,7 +5,7 @@ import RegisterModal from './modals/RegisterModal';
 import LoginModal from './modals/LoginModal';
 
 import ReviewModal from './modals/ReviewModal';
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 
 interface LayoutProps {
   children: ReactNode;
