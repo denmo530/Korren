@@ -6,7 +6,7 @@ import UserMenu from './UserMenu';
 const Navbar: React.FC = () => {
   return (
     <div className={styles.container}>
-      <h1>
+      <h1 className="font-semibold text-2xl">
         <Link style={{ textDecoration: 'none', color: 'black' }} href={{ pathname: '/' }}>
           Korren
         </Link>

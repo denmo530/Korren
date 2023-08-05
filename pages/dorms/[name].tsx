@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import { Review } from '@prisma/client';
 import Link from 'next/link';
-import { BsArrowLeft, BsSortDown } from 'react-icons/bs';
+import { BsArrowLeft } from 'react-icons/bs';
 import { GetServerSidePropsContext } from 'next';
-import { getAllDormNames, getDormData } from '@/lib/dorms';
 import styles from '@/styles/name.module.css';
 import Rating from '@/components/Rating';
 import ReviewCard from '@/components/ReviewCard';
 import SortingButton from '@/components/SortingButton';
 import Carousel from '@/components/Carousel';
-import useImageModal from '@/hooks/useImageModal';
-import ImageModal from '@/components/modals/ImageModal';
 import prismadb from '@/lib/prismadb';
 
 type Dorm = {
@@ -22,35 +19,6 @@ type Dorm = {
   adress: string;
   reviews: Review[];
 };
-
-const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
-
-// export async function getStaticPaths() {
-//   try {
-//     const dorms = await prismadb.dorm.findMany();
-//     if (dorms) {
-//       const dormNames = dorms.map((dorm) => dorm.name);
-//       const paths = dormNames.map((dormName: string) => {
-//         return {
-//           params: {
-//             name: dormName.toLowerCase(),
-//           },
-//         };
-//       });
-
-//       return {
-//         paths,
-//         fallback: false,
-//       };
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     return {
-//       paths: [],
-//       fallback: false,
-//     };
-//   }
-// }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const name = context.params?.name as string; // Get dynamic parameter directly from context
@@ -66,7 +34,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
     const filteredDorm = dorms.find((dorm) => dorm.name.toLowerCase() === name.toLowerCase());
 
-    if (!filteredDorm) throw new Error('Dorm not found');
+    if (!filteredDorm) {
+      return { notFound: true };
+    }
 
     // Fetch reviews
     const reviews = await prismadb.review.findMany({
