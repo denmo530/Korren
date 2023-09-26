@@ -111,6 +111,7 @@ const ReviewModal = () => {
         <div>
           <Input
             id="title"
+            label="Title"
             type="text"
             register={register}
             disabled={isLoading}
@@ -136,6 +137,7 @@ const ReviewModal = () => {
             register={register}
             errors={errors}
             disabled={isLoading}
+            label="Review"
             required
           />
         </div>

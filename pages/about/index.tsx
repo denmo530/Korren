@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function about() {
   return (
-    <div className="flex flex-col justify-center min-h-screen px-6 py-12 md:py-24 md:px-32 md:flex-row md:gap-10">
+    <div className="flex flex-col justify-center min-h-screen px-6 py-12 md:py-24 md:px-28 md:flex-row md:gap-10">
       <div className="w-full md:w-1/2">
         <span className="text-lg uppercase space text-primary font-semibold">Om oss</span>
         <h1 className="text-3xl font-semibold">StudentHörnan</h1>

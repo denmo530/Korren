@@ -6,7 +6,7 @@ const HeroBanner: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.imageBox}>
-        <Image src="/images/header.png" alt="hero image example" fill quality={100} />
+        <Image src="/images/header.webp" alt="hero image example" fill />
       </div>
 
       <div className={styles.heroText}>

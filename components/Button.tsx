@@ -19,21 +19,15 @@ const Button: React.FC<ButtonProps> = ({
   small,
   icon: Icon
 }) => {
-  const buttonStyles = {
-    backgroundColor: outline ? 'white' : '#68904D',
-    border: outline ? '1px solid black' : '1px solid #68904D',
-    color: outline ? 'black' : 'white',
-    padding: small ? '4px 0' : '12px',
-    fontSize: small ? 'small' : 'large',
-    fontWeight: small ? 'light' : 'semi-bold',
-    borderWidth: small ? '1px' : '2px'
-  };
-
   return (
     <button
-      className={styles.btn}
+      className={`relative rounded-lg w-full cursor-pointer transition-all bg-secondary p-3 text-lg  font-semibold border-2 border-secondary ${
+        outline === true
+          ? 'bg-white border-black text-black hover:opacity-70'
+          : 'hover:text-secondary hover:bg-white  duration-500 text-white'
+      } ${small === true && 'py-1 px-0 text-sm font-light border-1'}
+      `}
       type="button"
-      style={buttonStyles}
       onClick={onClick}
       disabled={disabled}>
       {Icon && <Icon size={24} className={styles.icon} />}

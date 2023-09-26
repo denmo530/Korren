@@ -1,13 +1,12 @@
 .card {
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  min-width: 600px;
   width: 100%;
   overflow: hidden;
   border-radius: 0.5rem;
   margin: 10px 0;
   padding: 1rem;
-
   background-color: rgba(200, 210, 209, 0.4);
 }
 
@@ -80,6 +79,7 @@
 @media (max-width: 768px) {
   .card {
     max-width: 100%;
+    min-width: 0px;
   }
 
   .header,

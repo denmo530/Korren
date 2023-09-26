@@ -5,20 +5,16 @@ import FooterLinks from './FooterLinks';
 const footerItems = {
   pages: [
     {
-      title: 'Blog',
-      src: '/about'
-    },
-    {
       title: 'About Us',
       src: '/about'
     },
     {
       title: 'Contact',
-      src: '/about'
+      src: '/contact'
     },
     {
       title: 'All Dorms',
-      src: '/about'
+      src: '/dorms'
     }
   ],
   links: [
@@ -28,7 +24,7 @@ const footerItems = {
     },
     {
       title: 'Privacy Policy',
-      src: ''
+      src: '/privacy'
     }
   ]
 };
@@ -40,7 +36,10 @@ const Footer: React.FC = () => {
       <FooterPages items={footerItems.pages} />
       <FooterLinks items={footerItems.links} />
       <div className="mt-5 text-xs">
-        <p>Developed by Dennis Moradkhani& Tim Olsson</p>
+        <p>
+          Developed by <span className="font-semibold text-primary ">Dennis Moradkhani</span> &{' '}
+          <span className="font-semibold  text-primary ">Tim Olsson</span>
+        </p>
       </div>
     </footer>
   );

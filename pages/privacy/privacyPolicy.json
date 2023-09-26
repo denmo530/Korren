@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Insamling av personuppgifter",
+    "text": "Vi samlar in de personuppgifter som du frivilligt tillhandahåller när du skapar ett konto på vår webbplats. Dessa uppgifter kan inkludera ditt förnamn, efternamn, e-postadress och lösenord. Alternativt kan du välja att använda OAuth-koppling via Google, Facebook eller Github för att skapa ett konto, vilket ger oss åtkomst till vissa uppgifter från ditt konto på dessa plattformar."
+  },
+  {
+    "title": "Användning av personuppgifter",
+    "text": "Vi använder de insamlade personuppgifterna för att administrera ditt konto och för att ge dig tillgång till våra tjänster på Studenthörnan. Detta inkluderar möjligheten att skapa och publicera recensioner om olika boenden på vår webbplats."
+  },
+  {
+    "title": "Lagring av personuppgifter",
+    "text": "Dina personuppgifter lagras på säkra servrar och skyddas mot obehörig åtkomst, ändring och radering. Vi behåller dina personuppgifter så länge som det är nödvändigt för att uppfylla de ändamål som anges i denna integritetspolicy eller enligt gällande lagstiftning."
+  },
+  {
+    "title": "Delning av personuppgifter",
+    "text": "Vi delar inte dina personuppgifter med tredje parter utan ditt uttryckliga samtycke, förutom i de fall där det krävs enligt lag eller för att uppfylla våra rättsliga skyldigheter."
+  },
+  {
+    "title": "Användning av cookies",
+    "text": "Vi kan använda cookies och liknande tekniker för att förbättra användarupplevelsen på Studenthörnan. Cookies är små textfiler som placeras på din enhet när du besöker vår webbplats och möjliggör viss funktionalitet och användaråterkänning. Du kan när som helst ändra dina webbläsarinställningar för att blockera cookies eller bli meddelad när cookies används."
+  },
+  {
+    "title": "Rättigheter och val",
+    "text": "Du har rätt att begära åtkomst till de personuppgifter vi har om dig, korrigera eventuella felaktigheter i dessa uppgifter och begära radering av dina personuppgifter från våra register. Om du vill utnyttja någon av dessa rättigheter eller har frågor om vår behandling av dina personuppgifter, vänligen kontakta oss genom att använda kontaktinformationen nedan."
+  },
+  {
+    "title": "Ändringar i integritetspolicyn",
+    "text": "Vi förbehåller oss rätten att när som helst göra ändringar i denna integritetspolicy. Eventuella ändringar kommer att publiceras på vår webbplats, och det är ditt ansvar att regelbundet granska policyn för att vara medveten om eventuella uppdateringar."
+  },
+  {
+    "title": "Kontakta oss",
+    "text": "Om du har några frågor, bekymmer eller begäranden avseende vår integritetspolicy eller vår behandling av dina personuppgifter, vänligen kontakta oss på följande e-postadress: [din-kontakt-e-post]."
+  }
+]
