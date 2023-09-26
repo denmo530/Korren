@@ -89,10 +89,8 @@
 .btn {
   padding: 0.25rem;
   border: none;
-  transition: all 150ms ease;
   left: 1.5rem;
   position: absolute;
-  background-color: #fff;
   color: black;
   cursor: pointer;
 }
