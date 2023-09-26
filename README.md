@@ -26,17 +26,3 @@ Korren is the handy web tool for new student's who are in need of guidance for m
 
 - Dennis Moradkhani - Developer & Designer
 - Tim Olsson - Developer & Designer
-
-## Screencasts
-
-Joint screencast:
-
-- https://youtu.be/-fHk7FsEQ4E
-
-Dennis Moradkhani:
-
-- https://youtu.be/kKcrPK9UATg
-
-Tim Olsson:
-
-- https://youtu.be/JLZqNN0h9W4
