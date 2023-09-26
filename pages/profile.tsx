@@ -78,7 +78,7 @@ export default function Profile() {
               user={user}
               selectedOption={selectedOption}
               setSelectedOption={setSelectedOption}
-              totalReviews={reviews.length}
+              totalReviews={reviews?.length}
             />
           )}
         </div>

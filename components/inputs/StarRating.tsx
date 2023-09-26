@@ -27,7 +27,7 @@ const StarRating: React.FC<StarRatingProps> = ({ value, onChange }) => {
   // );
 
   return (
-    <div>
+    <div className=" flex flex-row justify-center mt-4 ">
       {[...Array(5)].map((star, index) => {
         const ratingValue = index + 1;
         return (
@@ -58,7 +58,6 @@ const StarRating: React.FC<StarRatingProps> = ({ value, onChange }) => {
           </label>
         );
       })}
-      <div>The rating is {value}</div>
     </div>
   );
 };
